@@ -14,73 +14,80 @@
             @livewire('create-post')
         </div>
     </div>
-    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                <tr>
-                    <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="ordenar('titulo')">
-                        <i class="fas fa-sort mr-1"></i>Título
-                    </th>
-                    <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="ordenar('contenido')">
-                        <i class="fas fa-sort mr-1 "></i>Contenido
-                    </th>
-                    <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="ordenar('estado')">
-                        <i class="fas fa-sort mr-1"></i>Estado
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Tags
-                    </th>
-                    <th scope="col" class="px-6 py-3">
-                        Acciones
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($posts as $item)
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row"
-                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{ $item->titulo }}
+    @if ($posts->count())
+        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="ordenar('titulo')">
+                            <i class="fas fa-sort mr-1"></i>Título
                         </th>
-                        <td class="px-6 py-4 font-sans">
-                            {{ $item->contenido }}
-                        </td>
-                        <td @class([
-                            'px-6 py-4 font-bold',
-                            'text-green-600' => $item->estado == 'Publicado',
-                            'text-red-600 line-through' => $item->estado == 'Borrador',
-                        ])>
-                            <p class="px-2 py-1 rounded-lg bg-gray-200 cursor-pointer" wire:click="cambiarEstado({{ $item->id }})">{{ $item->estado }}</p>
-                        </td>
-                        <td class="px-6 py-4">
-                            <div class="flex flex-col">
-                                @foreach ($item->tags as $tag)
-                                    <div class="mt-1 px-2 py-1 rounded-lg text-black"
-                                        style="background-color:{{ $tag->color }}">
-                                        #{{ $tag->nombre }}
-                                    </div>
-                                @endforeach
-                            </div>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                            <button wire:click="editar({{ $item->id }})">
-                                <i class="fas fa-edit text-purple-500 text-sm hover:text-lg"></i>
-                            </button>
-                            <button wire:click="preguntarBorrar({{ $item->id }})">
-                                <i class="fas fa-trash text-red-500 text-sm hover:text-lg"></i>
-                            </button>
-
-                        </td>
+                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="ordenar('contenido')">
+                            <i class="fas fa-sort mr-1 "></i>Contenido
+                        </th>
+                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="ordenar('estado')">
+                            <i class="fas fa-sort mr-1"></i>Estado
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Tags
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Acciones
+                        </th>
                     </tr>
-                @endforeach
+                </thead>
+                <tbody>
+                    @foreach ($posts as $item)
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $item->titulo }}
+                            </th>
+                            <td class="px-6 py-4 font-sans">
+                                {{ $item->contenido }}
+                            </td>
+                            <td @class([
+                                'px-6 py-4 font-bold',
+                                'text-green-600' => $item->estado == 'Publicado',
+                                'text-red-600 line-through' => $item->estado == 'Borrador',
+                            ])>
+                                <p class="px-2 py-1 rounded-lg bg-gray-200 cursor-pointer"
+                                    wire:click="cambiarEstado({{ $item->id }})">{{ $item->estado }}</p>
+                            </td>
+                            <td class="px-6 py-4">
+                                <div class="flex flex-col">
+                                    @foreach ($item->tags as $tag)
+                                        <div class="mt-1 px-2 py-1 rounded-lg text-black"
+                                            style="background-color:{{ $tag->color }}">
+                                            #{{ $tag->nombre }}
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <button wire:click="editar({{ $item->id }})">
+                                    <i class="fas fa-edit text-purple-500 text-sm hover:text-lg"></i>
+                                </button>
+                                <button wire:click="preguntarBorrar({{ $item->id }})">
+                                    <i class="fas fa-trash text-red-500 text-sm hover:text-lg"></i>
+                                </button>
 
-            </tbody>
-        </table>
-    </div>
-    <div class="mt-1">
-        {{ $posts->links() }}
-    </div>
+                            </td>
+                        </tr>
+                    @endforeach
+
+                </tbody>
+            </table>
+        </div>
+        <div class="mt-1">
+            {{ $posts->links() }}
+        </div>
+    @else
+        <p class='p-4 rounded-xl shadow-xl text-purple-400 bg-gray-100 text-lg font-semibold border-2 border-gray-300'>
+            No se encontró ningún post o aun no creo ninguno.
+        </p>
+    @endif
     <!---------------------------------------------------------- MODAL FORMULARIO EDITAR -------------------------------------------------------------------->
     @if ($this->form->miPost != null)
         <x-dialog-modal wire:model="openEditar">

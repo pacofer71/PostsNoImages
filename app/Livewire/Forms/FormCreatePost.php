@@ -9,23 +9,24 @@ use Livewire\Form;
 class FormCreatePost extends Form
 {
     #[Validate(['required', 'string', 'min:5', 'max:40', 'unique:posts,titulo'])]
-    public string $titulo="";
+    public string $titulo = "";
 
     #[Validate(['required', 'string', 'min:5', 'max:250'])]
-    public string $contenido="";
+    public string $contenido = "";
 
-    public ?string $estado=null;
+    public ?string $estado = null;
 
     #[Validate(['required', 'array', 'min:1', 'exists:tags,id'])]
-    public array $tags=[];
+    public array $tags = [];
 
-    public function crear(){
+    public function crear()
+    {
         $this->validate();
-        $post=Post::create([
-            'titulo'=>$this->titulo,
-            'contenido'=>$this->contenido,
-            'estado'=>($this->estado==null) ? 'Borrador' : 'Publicado',
-            'user_id'=>auth()->user()->id,
+        $post = Post::create([
+            'titulo' => $this->titulo,
+            'contenido' => $this->contenido,
+            'estado' => ($this->estado == null) ? 'Borrador' : 'Publicado',
+            'user_id' => auth()->user()->id,
         ]);
 
         $post->tags()->attach($this->tags);
@@ -33,7 +34,8 @@ class FormCreatePost extends Form
         $this->limpiar();
     }
 
-    public function limpiar(){
+    public function limpiar()
+    {
         $this->reset(['titulo', 'contenido', 'estado', 'tags']);
     }
 }

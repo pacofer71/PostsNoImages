@@ -14,7 +14,7 @@
                 <x-input-error for="form.titulo" />
             </div>
             <div class="mb-5">
-                <label for="contenido" 
+                <label for="contenido"
                     class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contenido</label>
                 <textarea wire:model="form.contenido" id="contenido" rows='10' placeholder='Contenido...'
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
@@ -52,13 +52,15 @@
         </x-slot>
         <x-slot name="footer">
             <div class="flex">
-                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg" wire:click='cancelar'>
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg"
+                    wire:click='cancelar'>
                     <i class="fas fa-xmark mr-2"></i> Cancelar
                 </button>
                 <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-lg mx-2">
                     <i class="fas fa-paintbrush mr-2"></i> Limpiar
                 </button>
-                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg" wire:click='guardar'>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg"
+                    wire:click='guardar'>
                     <i class="fas fa-save mr-2"></i> Guardar
                 </button>
             </div>

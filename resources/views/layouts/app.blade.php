@@ -52,13 +52,14 @@
     <script>
         Livewire.on('borrar_0', (userId) => {
             Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
+                title: "Está seguro?",
+                text: "No podrá cambiar esto",
                 icon: "warning",
                 showCancelButton: true,
                 confirmButtonColor: "#3085d6",
                 cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
+                confirmButtonText: "Si, borraló",
+                cancelButtonText: "Cancelar"
             }).then((result) => {
                 if (result.isConfirmed) {
                     Livewire.dispatchTo('admin-user-posts', 'borrar_1', userId);

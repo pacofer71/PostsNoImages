@@ -59,10 +59,11 @@ class AdminUserPosts extends Component
         $this->dispatch('mensaje', 'Post Eliminado.');
     }
 
-    public function cambiarEstado(Post $post){
+    public function cambiarEstado(Post $post)
+    {
         $this->authorize('update', $post);
         $post->update([
-            'estado'=>($post->estado=='Publicado') ? 'Borrador' : 'Publicado',
+            'estado' => ($post->estado == 'Publicado') ? 'Borrador' : 'Publicado',
         ]);
     }
 
@@ -74,14 +75,16 @@ class AdminUserPosts extends Component
         $this->openEditar = true;
     }
 
-    public function update(){
+    public function update()
+    {
         $this->form->editar();
         $this->cancelar();
         $this->dispatch('mensaje', 'Post actualizado');
     }
 
-    public function cancelar(){
-        $this->openEditar=false;
+    public function cancelar()
+    {
+        $this->openEditar = false;
         $this->form->limpiar();
     }
 }
