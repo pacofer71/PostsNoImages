@@ -9,7 +9,7 @@
                         {{ $item->titulo }}
                     </div>
                     <div class="italic text-purple-400 font-mono twxt-sm">
-                        {{ $item->contenido }} 
+                        {{ $item->contenido }}
                     </div>
                     <div class="flex justify-center italic text-blue-600 text-sm my-5 cursor-pointer">
                         <a href="{{ route('inicio', ['email', $item->user->id]) }}">{{ $item->user->email }}</a>
