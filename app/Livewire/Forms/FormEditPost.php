@@ -13,7 +13,7 @@ class FormEditPost extends Form
     public ?Post $miPost = null;
     public string $titulo = "";
 
-    #[Validate(['required', 'string', 'min:5', 'max:250'])]
+    #[Validate(['required', 'string', 'min:5', 'max:1500'])]
     public string $contenido = "";
 
     public ?string $estado = null;
@@ -33,7 +33,7 @@ class FormEditPost extends Form
     protected function rules(): array
     {
         return [
-            'titulo' => ['required', 'string', 'min:5', 'max:50', 'unique:posts,titulo,' . $this->miPost->id]
+            'titulo' => ['required', 'string', 'min:5', 'max:120', 'unique:posts,titulo,' . $this->miPost->id]
         ];
     }
 

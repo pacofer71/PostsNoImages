@@ -8,10 +8,10 @@ use Livewire\Form;
 
 class FormCreatePost extends Form
 {
-    #[Validate(['required', 'string', 'min:5', 'max:40', 'unique:posts,titulo'])]
+    #[Validate(['required', 'string', 'min:5', 'max:100', 'unique:posts,titulo'])]
     public string $titulo = "";
 
-    #[Validate(['required', 'string', 'min:5', 'max:250'])]
+    #[Validate(['required', 'string', 'min:5', 'max:1500'])]
     public string $contenido = "";
 
     public ?string $estado = null;

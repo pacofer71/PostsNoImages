@@ -4,12 +4,12 @@
         <div class="grid grid-cols-3 gap-x-2 gap-y-3">
             @foreach ($posts as $item)
                 <article
-                    class="flex flex-col justify-between  p-4 rounded-lg border-2 border-gray-300 shadow-xl bg-gray-100">
+                    class="h-96 flex flex-col justify-between  p-4 rounded-lg border-2 border-gray-300 shadow-xl bg-gray-100 overflow-y-auto">
                     <div class="text-xl font-semibold text-purple-600 text-center mb-5">
                         {{ $item->titulo }}
                     </div>
                     <div class="italic text-purple-400 font-mono twxt-sm">
-                        {{ $item->contenido }}
+                        {{ $item->contenido }} 
                     </div>
                     <div class="flex justify-center italic text-blue-600 text-sm my-5 cursor-pointer">
                         <a href="{{ route('inicio', ['email', $item->user->id]) }}">{{ $item->user->email }}</a>
