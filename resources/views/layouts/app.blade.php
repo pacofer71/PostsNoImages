@@ -25,10 +25,10 @@
     @livewireStyles
 </head>
 
-<body class="font-sans antialiased">
+<body class="font-sans antialiased" style="background-color: #004D40">
     <x-banner />
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen">
         @livewire('navigation-menu')
 
         <!-- Page Heading -->
